@@ -11,20 +11,37 @@ export default createGlobalStyle`
 
     box-sizing: border-box;
   }
+
+  @media (max-width: 1080px) {
+    html {
+      font-size: 93.75%; /*isso equivale a 15px*/
+    }
+  }
+
+  @media (max-width: 720px) {
+    html {
+      font-size: 87.5%; /*14px*/
+    }
+  }
   
   body {    
     -webkit-font-smoothing: antialiased;
-    background: ${props => props.theme.colors.background};
-    color: ${props => props.theme.colors.text};
+    background: ${(props) => props.theme.colors.background};
+    color: ${(props) => props.theme.colors.text};
   }
 
-  body, input, button {
-    font-size: 16px;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Open Sans', sans-serif
+  body,
+  input,
+  textarea,
+  button {
+    font: 400 1rem -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Open Sans', sans-serif
   }
+
 
   body, #root {
-    width: 100%;
+    max-width: 64.0rem; //960px
+    margin: 0 auto;
+    
     height: 100%;
   }
 

@@ -12,16 +12,16 @@ export const Container = styled.div`
   margin-left: auto;
   margin-right: auto;
 
-  width: 350px;
-  padding: 20px 0;
+  width: 23.35rem;
+  padding: 1.335rem 0;
 
-  border-top: 1px solid var(--color-gray);
+  border-top: 0.5px solid #e6e6e657;
 
   p {
-    line-height: 23px;
+    line-height: 1.54rem;
 
     strong {
-      color: var(--color-purple);
+      color: #544BF7;
     }
   }
 `;

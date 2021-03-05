@@ -18,8 +18,8 @@ function App() {
 
   return (
     <ThemeProvider theme={theme}>
-      <Routes />
       <ButtonTheme handleChangeTheme={handleChangeTheme} theme={theme.title} />
+      <Routes />
       <Footer />
       <GlobalStyles />
     </ThemeProvider>
