@@ -6,7 +6,7 @@ const light = {
     secondary: "red",
 
     background: "#f0f0f5",
-    text: "#0d0d0d",
+    text: "#000000",
   },
 };
 
