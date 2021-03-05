@@ -3,10 +3,12 @@ const light = {
 
   colors: {
     primary: "#751aff",
-    secondary: "red",
+    secondary: "#d9d9d9",
+    tertiary: "#53575f",
+    quaternary: "rgb(32,34,37)",
 
     background: "#f0f0f5",
-    text: "#000000",
+    text: "#1a1a1a",
   },
 };
 

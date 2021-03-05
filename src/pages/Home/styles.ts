@@ -19,7 +19,7 @@ export const Container = styled.div`
       padding: 1rem 1.34rem;
 
       background: #544bf7;
-      color: ${(props) => props.theme.colors.text};
+      color: white;
       font-weight: bold;
 
       border-radius: 0.3rem;
