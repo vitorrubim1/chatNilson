@@ -1,12 +1,6 @@
 import { createGlobalStyle } from "styled-components";
 
 export default createGlobalStyle`
-  :root {
-    --color-dark: #0d0d0d;
-    --color-white: #f2f2f2;
-    --color-purple: #751aff;
-  }
-
   * {
     margin: 0;
     padding: 0;
@@ -20,6 +14,8 @@ export default createGlobalStyle`
   
   body {    
     -webkit-font-smoothing: antialiased;
+    background: ${props => props.theme.colors.background};
+    color: ${props => props.theme.colors.text};
   }
 
   body, input, button {
@@ -27,10 +23,9 @@ export default createGlobalStyle`
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Open Sans', sans-serif
   }
 
-  #root {
-    max-width: 960px;
-    margin: 0 auto;
-    padding: 40px 20px;
+  body, #root {
+    width: 100%;
+    height: 100%;
   }
 
   button {
