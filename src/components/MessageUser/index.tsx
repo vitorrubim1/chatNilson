@@ -1,19 +1,38 @@
 import React from "react";
+import { FormikContext, Form, useFormik } from "formik";
 
-import { Container, TextMessage } from "./styles";
+import { SendIcon } from "../../styles/Icons";
+import { Container, MessageContainer } from "./styles";
 
-interface PropsMessage {
-  message: string;
-}
+const MessageUser: React.FC = ({ children }) => {
+  const methods = useFormik({
+    enableReinitialize: true,
+    initialValues: {
+      email: "",
+      nome: "",
+      dataNascimento: "",
+    },
+    // validationSchema: ValidationForm,
+    onSubmit: (values) => {
+      console.log(values);
+    },
+  });
 
-const MessageUser: React.FC<PropsMessage> = ({ message }) => {
   return (
     <Container>
-      <TextMessage>
-        <span>
-          {message}
-        </span>
-      </TextMessage>
+      <MessageContainer>
+        <div>
+          <FormikContext.Provider value={methods}>
+            <Form>
+              {children} {/*input*/}
+              
+              <button type="submit">
+                Enviar <SendIcon />
+              </button>
+            </Form>
+          </FormikContext.Provider>
+        </div>
+      </MessageContainer>
     </Container>
   );
 };

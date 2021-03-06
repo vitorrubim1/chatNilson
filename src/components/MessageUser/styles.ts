@@ -1,34 +1,58 @@
 import styled from "styled-components";
 
-
 export const Container = styled.div`
   display: flex;
   align-items: center;
 
-  height: 8rem;
-  margin: 1rem;
+  height: 7rem;
 `;
 
-
-export const TextMessage = styled.div`
+export const MessageContainer = styled.div`
   position: absolute;
   right: 1rem;
   display: flex;
 
   height: auto;
 
-  span {   
-    width: 23.34rem;
+  > div {
+    display: flex;
 
+    min-width: 23.34rem;
     padding: 0.8rem;
-    margin-top: 1rem;
-    
-    font-size: 1.1rem;
-    line-height: 1.4rem;
-    flex-wrap: wrap;
 
     border-radius: 10px 10px 0 10px;
-    background: ${props => props.theme.colors.quaternary};
-    color: white;
+    background: ${(props) => props.theme.colors.quaternary};
+
+    form {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      input {
+        padding: 10px 16px;
+        background: transparent;
+        color: white;
+
+        margin-right: 15px;
+
+        border: 0.1px solid #333333;
+        border-radius: 5px;
+      }
+
+      button {
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+
+        background: ${(props) => props.theme.colors.primary};
+        color: white;
+        font-weight: bold;
+
+        width: 90px;
+        padding: 9px;
+        border: 0;
+        border-radius: 3px;
+      }
+    }
   }
 `;
