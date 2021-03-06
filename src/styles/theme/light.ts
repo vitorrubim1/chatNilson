@@ -2,7 +2,7 @@ const light = {
   title: "light",
 
   colors: {
-    primary: "#751aff",
+    primary: "#544bf7",
     secondary: "#d9d9d9",
     tertiary: "#53575f",
     quaternary: "rgb(32,34,37)",
