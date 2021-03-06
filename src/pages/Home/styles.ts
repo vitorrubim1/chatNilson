@@ -18,7 +18,7 @@ export const Container = styled.div`
     a {
       padding: 1rem 1.34rem;
 
-      background: #544bf7;
+      background: ${props => props.theme.colors.primary};
       color: white;
       font-weight: bold;
 
