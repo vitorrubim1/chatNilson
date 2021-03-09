@@ -1,20 +1,28 @@
-import React, { InputHTMLAttributes } from "react";
+import React, { InputHTMLAttributes, useCallback } from "react";
 import { Field } from "formik";
+
+import { date } from "./mask";
 
 import { Container } from "./styles";
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
-  name: "nomeSobrenome" | "cidadadeEstado" | "dataNascimento" | "email";
-  hasError?: boolean;
+  name: "nomeSobrenome" | "cidadeEstado" | "dataNascimento" | "email";
+  mask?: "date";
 }
 
-const InputField: React.FC<InputProps> = ({ name, hasError, ...rest }) => {
+const InputField: React.FC<InputProps> = ({ name, value, mask, ...rest }) => {
+  const handleKeyUp = useCallback(
+    (event: React.FormEvent<HTMLFormElement>, maxLength) => {
+      if (mask === "date") {
+        date(event, 8);
+      }
+    },
+    [mask]
+  );
+
   return (
     <Container>
-      <div>
-        <Field name={name} type="string" {...rest} />
-      </div>
-      {/* <span>Aqui terá um erro</span> */}
+      <Field name={name} type="string" onKeyUp={handleKeyUp} {...rest} />
     </Container>
   );
 };

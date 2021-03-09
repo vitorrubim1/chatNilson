@@ -14,8 +14,7 @@ export const MessageContainer = styled.div`
 
   height: auto;
 
-  > div {
-    display: flex;
+  display: flex;
 
     min-width: 23.34rem;
     padding: 0.8rem;
@@ -23,7 +22,7 @@ export const MessageContainer = styled.div`
     border-radius: 10px 10px 0 10px;
     background: ${(props) => props.theme.colors.quaternary};
 
-    form {
+    div {
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -38,21 +37,5 @@ export const MessageContainer = styled.div`
         border: 0.1px solid #333333;
         border-radius: 5px;
       }
-
-      button {
-        display: flex;
-        align-items: center;
-        justify-content: space-around;
-
-        background: ${(props) => props.theme.colors.primary};
-        color: white;
-        font-weight: bold;
-
-        width: 90px;
-        padding: 9px;
-        border: 0;
-        border-radius: 3px;
-      }
     }
-  }
 `;
