@@ -12,9 +12,9 @@ interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
 
 const InputField: React.FC<InputProps> = ({ name, value, mask, ...rest }) => {
   const handleKeyUp = useCallback(
-    (event: React.FormEvent<HTMLFormElement>, maxLength) => {
+    (event: React.FormEvent<HTMLFormElement>) => {
       if (mask === "date") {
-        date(event, 8);
+        date(event, 10);
       }
     },
     [mask]
