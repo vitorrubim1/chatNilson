@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { darken } from "polished";
 
 export const FormButton = styled.button`
   display: flex;
@@ -13,4 +14,9 @@ export const FormButton = styled.button`
   padding: 9px;
   border: 0;
   border-radius: 3px;
+
+  transition: background 200ms;
+  &:hover {
+    background: ${darken(0.03, '#544bf7')};
+  }
 `;

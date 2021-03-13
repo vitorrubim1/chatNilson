@@ -19,7 +19,7 @@ export const ChatMessages = styled.div`
   padding-top: 20px;
 
   width: 70%;
-  height: 100%;
+  height: 75vh;
 
   background: ${(props) => props.theme.colors.secondary};
 
