@@ -22,7 +22,13 @@ const InputField: React.FC<InputProps> = ({ name, value, mask, ...rest }) => {
 
   return (
     <Container>
-      <Field name={name} type="string" onKeyUp={handleKeyUp} {...rest} />
+      <Field
+        name={name}
+        type="string"
+        onKeyUp={handleKeyUp}
+        autoFocus={true}
+        {...rest}
+      />
     </Container>
   );
 };

@@ -1,10 +1,14 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  /* display: flex;
-  flex-direction: column;
+  input {
+    padding: 10px 16px;
+    background: transparent;
+    color: white;
 
-  span {
-    line-height: 20px;
-  } */
+    margin-right: 15px;
+
+    border: 0.1px solid #333333;
+    border-radius: 5px;
+  }
 `;
