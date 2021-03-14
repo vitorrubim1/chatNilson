@@ -1,13 +1,14 @@
 import { useState } from "react";
 import { ThemeProvider } from "styled-components";
 
-import Routes from "./routes";
-import Footer from "./components/Footer";
 import ButtonTheme from "./components/ButtonTheme";
+import Footer from "./components/Footer";
+import Routes from "./routes";
 
+import { GlobalContextProvider } from "./context/GlobalContext";
+import GlobalStyles from "./styles/Global";
 import light from "./styles/theme/light";
 import dark from "./styles/theme/dark";
-import GlobalStyles from "./styles/Global";
 
 function App() {
   const [theme, setTheme] = useState(dark);
@@ -17,12 +18,17 @@ function App() {
   }
 
   return (
-    <ThemeProvider theme={theme}>
-      <ButtonTheme handleChangeTheme={handleChangeTheme} theme={theme.title} />
-      <Routes />
-      <Footer />
-      <GlobalStyles />
-    </ThemeProvider>
+    <GlobalContextProvider>
+      <ThemeProvider theme={theme}>
+        <ButtonTheme
+          handleChangeTheme={handleChangeTheme}
+          theme={theme.title}
+        />
+        <Routes />
+        <Footer />
+        <GlobalStyles />
+      </ThemeProvider>
+    </GlobalContextProvider>
   );
 }
 

@@ -34,7 +34,7 @@ export const Container = styled.div`
       content: "★";
       position: relative;
       font-size: 50px;
-      color: ${(props) => props.theme.colors.text};
+      color: white;
     }
 
     label:after {

@@ -7,5 +7,5 @@ export default interface IDadosMessageData {
   cidadeEstado: string,
   dataNascimento: string,
   email: string,
-  avaliacao?: number;
+  avaliacao: string;
 }

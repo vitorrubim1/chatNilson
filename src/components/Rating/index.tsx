@@ -1,5 +1,5 @@
-import React, { useContext, useEffect, useCallback, useState } from "react";
-import { EvaluationContext } from "../../context/EvaluationContext";
+import React, { useContext, useEffect, useState } from "react";
+import { GlobalContext } from "../../context/GlobalContext";
 
 import { Container } from "./styles";
 
@@ -9,21 +9,15 @@ interface Props {
 }
 
 const Rating: React.FC<Props> = ({ name }) => {
-  const { handleSetEvaluationState } = useContext(EvaluationContext);
+  const { handleSetEvaluationState } = useContext(GlobalContext);
 
   const [valueEvaluation, setValueEvaluation] = useState(0);
 
-  const test = useCallback(() => {
+  useEffect(() => {
     if (valueEvaluation) {
       handleSetEvaluationState(Number(valueEvaluation));
-    } else {
-      return;
     }
   }, [valueEvaluation, handleSetEvaluationState]);
-
-  useEffect(() => {
-    test();
-  }, [test]);
 
   return (
     <Container>
