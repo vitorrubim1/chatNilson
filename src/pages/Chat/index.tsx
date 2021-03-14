@@ -7,11 +7,7 @@ import MessageBot from "../../components/MessageBot";
 import InputField from "../../components/Input";
 import Button from "../../components/Button";
 
-import IIBGEResponseDTO from "../../dtos/IIBGEResponseDTO";
-import { ibge } from "../../services/axios";
-
 import { Container, ChatMessages } from "./styles";
-import Select from "../../components/Input/Select";
 import Rating from "../../components/Rating";
 import { GlobalContext } from "../../context/GlobalContext";
 
@@ -22,10 +18,8 @@ const Chat: React.FC = () => {
     cidadeEstado,
     email,
     handleChangeStateValue,
-    handleShowAlertMessage
+    handleShowAlertMessage,
   } = useContext(GlobalContext);
-
-  // const [cidades, setCidades] = useState<IIBGEResponseDTO[]>([]);
 
   const initialValues = {
     nomeSobrenome: "",
@@ -33,15 +27,6 @@ const Chat: React.FC = () => {
     dataNascimento: "",
     email: "",
   };
-
-  // const loadCidades = useCallback(async () => {
-  //   const { data } = await ibge.get<IIBGEResponseDTO[]>("distritos");
-  //   setCidades(data);
-  // }, []);
-
-  // useEffect(() => {
-  //   loadCidades();
-  // }, []);
 
   const handleSubmitForm = useCallback(
     (values) => {
@@ -66,12 +51,6 @@ const Chat: React.FC = () => {
 
   return (
     <AnimatedChat>
-      {/* <select name="test">
-        {cidades.map((item) => (
-          <option value={item.id}>{`${item.nome}, ${item.municipio.microrregiao.mesorregiao.UF.nome}`} </option>
-        ))}
-      </select> */}
-
       <Container>
         <ChatMessages>
           <MessageBot message="Olá, eu sou Chatnilson, tudo bem? Para começarmos, preciso saber seu nome." />
@@ -91,7 +70,7 @@ const Chat: React.FC = () => {
                   required
                   value={nomeSobrenome}
                 />
-                <Button type="submit"/>
+                <Button type="submit" />
               </MessageUser>
 
               {nomeSobrenome && ( //nomeSobrenome
@@ -109,12 +88,7 @@ const Chat: React.FC = () => {
                       required
                       value={cidadeEstado}
                     />
-                    {/* <Select
-                      name="cidadeEstado"
-                      options={cidades}
-                      defaultValue={cidades}
-                    /> */}
-                    <Button type="submit"/>
+                    <Button type="submit" />
                   </MessageUser>
                 </AnimatedChat>
               )}
@@ -132,7 +106,7 @@ const Chat: React.FC = () => {
                       value={dataNascimento}
                       mask="date"
                     />
-                    <Button type="submit"/>
+                    <Button type="submit" />
                   </MessageUser>
                 </AnimatedChat>
               )}
@@ -149,14 +123,18 @@ const Chat: React.FC = () => {
                       placeholder="Email:"
                       value={email}
                     />
-                    <Button type="submit"/>
+                    <Button type="submit" />
                   </MessageUser>
                 </AnimatedChat>
               )}
 
               {nomeSobrenome && cidadeEstado && dataNascimento && email && (
                 <AnimatedChat>
-                  <MessageBot message="Você finalizou o teste Faça uma avaliação sobre o processo que realizou até chegar aqui. Nós agradecemos!" />
+                  <MessageBot
+                    message={`${
+                      nomeSobrenome[0].toUpperCase() + nomeSobrenome.substr(1)
+                    }, você finalizou o teste. Faça uma avaliação sobre o processo que realizou até chegar aqui. Nós agradecemos!`}
+                  />
 
                   <MessageUser>
                     <Rating name="avaliacao" value={1} />

@@ -10,7 +10,7 @@ function AlertMessage({ evaluationValue, nomeSobrenome }: Props) {
     title: `Olá ${nomeSobrenome}, muito obrigado pela avaliação!`,
     text: `${
       evaluationValue >= 4
-        ? `agradecemos pela nota ${evaluationValue}`
+        ? `agradecemos pela nota ${evaluationValue} :)`
         : `Sinto muito que não tenhamos te surpreendindo, da próxima vez a sua nota será maior do que ${evaluationValue} ;)`
     }`,
     icon: "success",

@@ -1,5 +1,3 @@
-import React from "react";
-
 import { Container, Avatar, TextMessage } from "./styles";
 
 interface PropsMessage {

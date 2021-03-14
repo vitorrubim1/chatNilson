@@ -11,4 +11,8 @@ export const Container = styled.div`
     border: 0.1px solid #333333;
     border-radius: 5px;
   }
+
+  input[type="date"] {
+    width: 15.38rem;
+  }
 `;

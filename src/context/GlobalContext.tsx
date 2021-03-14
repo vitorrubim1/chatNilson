@@ -1,10 +1,4 @@
-import {
-  createContext,
-  useState,
-  useCallback,
-  ReactNode,
-  useEffect,
-} from "react";
+import { createContext, useState, useCallback, ReactNode } from "react";
 
 import AlertMessage from "../components/Alert";
 
@@ -73,18 +67,7 @@ export function GlobalContextProvider({ children }: ContextProps) {
       evaluationValue
     ) {
       AlertMessage({ evaluationValue, nomeSobrenome });
-      // AlertMessage(nomeSobrenome, evaluationValue);
     }
-  }, [dataNascimento, nomeSobrenome, cidadeEstado, email, evaluationValue]);
-
-  useEffect(() => {
-    console.log({
-      dataNascimento,
-      nomeSobrenome,
-      cidadeEstado,
-      email,
-      evaluationValue,
-    });
   }, [dataNascimento, nomeSobrenome, cidadeEstado, email, evaluationValue]);
 
   return (
