@@ -72,7 +72,7 @@ export function GlobalContextProvider({ children }: ContextProps) {
       email &&
       evaluationValue
     ) {
-      AlertMessage();
+      AlertMessage({ evaluationValue, nomeSobrenome });
       // AlertMessage(nomeSobrenome, evaluationValue);
     }
   }, [dataNascimento, nomeSobrenome, cidadeEstado, email, evaluationValue]);
