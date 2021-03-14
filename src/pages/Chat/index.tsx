@@ -1,21 +1,31 @@
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useContext } from "react";
 import { Formik, Form } from "formik";
 
 import AnimatedChat from "../../components/AnimatedChat";
-import MessageBot from "../../components/MessageBot";
 import MessageUser from "../../components/MessageUser";
+import MessageBot from "../../components/MessageBot";
 import InputField from "../../components/Input";
 import Button from "../../components/Button";
 
-// import ValidationForm from "../../validations/ValidationSchema";
+import IIBGEResponseDTO from "../../dtos/IIBGEResponseDTO";
+import { ibge } from "../../services/axios";
 
 import { Container, ChatMessages } from "./styles";
+import Select from "../../components/Input/Select";
+import Rating from "../../components/Rating";
+import { GlobalContext } from "../../context/GlobalContext";
 
 const Chat: React.FC = () => {
-  const [nomeSobrenome, setNomeSobrenome] = useState("");
-  const [cidadeEstado, setCidadeEstado] = useState("");
-  const [dataNascimento, setDataNascimento] = useState("");
-  const [email, setEmail] = useState("");
+  const {
+    dataNascimento,
+    nomeSobrenome,
+    cidadeEstado,
+    email,
+    handleChangeStateValue,
+    handleShowAlertMessage
+  } = useContext(GlobalContext);
+
+  // const [cidades, setCidades] = useState<IIBGEResponseDTO[]>([]);
 
   const initialValues = {
     nomeSobrenome: "",
@@ -24,15 +34,44 @@ const Chat: React.FC = () => {
     email: "",
   };
 
-  const handleSubmitForm = useCallback((values) => {
-    setNomeSobrenome(values.nomeSobrenome);
-    setCidadeEstado(values.cidadeEstado);
-    setDataNascimento(values.dataNascimento);
-    setEmail(values.email);
-  }, []);
+  // const loadCidades = useCallback(async () => {
+  //   const { data } = await ibge.get<IIBGEResponseDTO[]>("distritos");
+  //   setCidades(data);
+  // }, []);
+
+  // useEffect(() => {
+  //   loadCidades();
+  // }, []);
+
+  const handleSubmitForm = useCallback(
+    (values) => {
+      if (values.nomeSobrenome) {
+        handleChangeStateValue(values.nomeSobrenome, "nomeSobrenome");
+      }
+
+      if (values.cidadeEstado) {
+        handleChangeStateValue(values.cidadeEstado, "cidadeEstado");
+      }
+
+      if (values.dataNascimento) {
+        handleChangeStateValue(values.dataNascimento, "dataNascimento");
+      }
+
+      if (values.email) {
+        handleChangeStateValue(values.email, "email");
+      }
+    },
+    [handleChangeStateValue]
+  );
 
   return (
     <AnimatedChat>
+      {/* <select name="test">
+        {cidades.map((item) => (
+          <option value={item.id}>{`${item.nome}, ${item.municipio.microrregiao.mesorregiao.UF.nome}`} </option>
+        ))}
+      </select> */}
+
       <Container>
         <ChatMessages>
           <MessageBot message="Olá, eu sou Chatnilson, tudo bem? Para começarmos, preciso saber seu nome." />
@@ -48,12 +87,14 @@ const Chat: React.FC = () => {
                 <InputField
                   name="nomeSobrenome"
                   placeholder="Digite seu nome:"
+                  maxLength={90}
+                  required
                   value={nomeSobrenome}
                 />
-                <Button />
+                <Button type="submit"/>
               </MessageUser>
 
-              {nomeSobrenome && (
+              {nomeSobrenome && ( //nomeSobrenome
                 <AnimatedChat>
                   <MessageBot
                     message={`Que satisfação, ${
@@ -65,9 +106,15 @@ const Chat: React.FC = () => {
                     <InputField
                       name="cidadeEstado"
                       placeholder="Digite sua cidade:"
+                      required
                       value={cidadeEstado}
                     />
-                    <Button />
+                    {/* <Select
+                      name="cidadeEstado"
+                      options={cidades}
+                      defaultValue={cidades}
+                    /> */}
+                    <Button type="submit"/>
                   </MessageUser>
                 </AnimatedChat>
               )}
@@ -79,11 +126,13 @@ const Chat: React.FC = () => {
                   <MessageUser>
                     <InputField
                       name="dataNascimento"
+                      type="date"
+                      required
                       placeholder="00/00/0000"
                       value={dataNascimento}
                       mask="date"
                     />
-                    <Button />
+                    <Button type="submit"/>
                   </MessageUser>
                 </AnimatedChat>
               )}
@@ -95,16 +144,33 @@ const Chat: React.FC = () => {
                   <MessageUser>
                     <InputField
                       name="email"
+                      type="email"
+                      required
                       placeholder="Email:"
                       value={email}
                     />
-                    <Button />
+                    <Button type="submit"/>
                   </MessageUser>
                 </AnimatedChat>
               )}
 
-              {false && (
-                <MessageBot message="Você finalizou o teste Faça uma avaliação sobre o processo que realizou até chegar aqui. Nós agradecemos!" />
+              {nomeSobrenome && cidadeEstado && dataNascimento && email && (
+                <AnimatedChat>
+                  <MessageBot message="Você finalizou o teste Faça uma avaliação sobre o processo que realizou até chegar aqui. Nós agradecemos!" />
+
+                  <MessageUser>
+                    <Rating name="avaliacao" value={1} />
+                    <div
+                      style={{
+                        position: "absolute",
+                        right: "1.1rem",
+                        bottom: "0.65rem",
+                      }}
+                    >
+                      <Button onClick={handleShowAlertMessage} />
+                    </div>
+                  </MessageUser>
+                </AnimatedChat>
               )}
             </Form>
           </Formik>
