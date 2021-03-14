@@ -20,8 +20,8 @@ export const Container = styled.div`
   p {
     line-height: 1.54rem;
 
-    strong {
-      color: #544BF7;
+    strong a{
+      color: ${props => props.theme.colors.primary} !important;
     }
   }
 `;
