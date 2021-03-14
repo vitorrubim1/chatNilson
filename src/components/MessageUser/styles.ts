@@ -8,18 +8,15 @@ export const Container = styled.div`
 `;
 
 export const MessageContainer = styled.div`
-  position: absolute;
-  right: 1rem;
   display: flex;
+  position: absolute;
+  right: 0.6rem;
 
   height: auto;
-
-  display: flex;
-
-  min-width: 23.34rem;
+  min-width: 23rem;
   padding: 0.8rem;
 
-  border-radius: 10px 10px 0 10px;
+  border-radius: 1rem 1rem 0 1rem;
   background: ${(props) => props.theme.colors.quaternary};
 
   div {

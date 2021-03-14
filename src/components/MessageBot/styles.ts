@@ -41,7 +41,8 @@ export const TextMessage = styled.div`
   height: auto;
 
   span {   
-    width: 23.34rem;
+    min-width: 23rem;
+    width: 23rem;
 
     padding: 0.8rem;
     margin-top: 1rem;
@@ -50,7 +51,7 @@ export const TextMessage = styled.div`
     line-height: 1.4rem;
     flex-wrap: wrap;
 
-    border-radius: 0 10px 10px 10px;
+    border-radius: 0 1rem 1rem 1rem;
     background: ${props => props.theme.colors.primary};
     color: white;
   }
