@@ -66,7 +66,7 @@ const Chat: React.FC = () => {
                 <InputField
                   name="nomeSobrenome"
                   placeholder="Digite seu nome:"
-                  maxLength={90}
+                  maxLength={40}
                   required
                   value={nomeSobrenome}
                 />
@@ -84,6 +84,7 @@ const Chat: React.FC = () => {
                   <MessageUser>
                     <InputField
                       name="cidadeEstado"
+                      maxLength={40}
                       placeholder="Digite sua cidade:"
                       required
                       value={cidadeEstado}
@@ -119,6 +120,7 @@ const Chat: React.FC = () => {
                     <InputField
                       name="email"
                       type="email"
+                      maxLength={50}  
                       required
                       placeholder="Email:"
                       value={email}
