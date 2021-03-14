@@ -1,15 +1,18 @@
-import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 
 interface Props {
-  name: string;
-  value: string;
+  nomeSobrenome: string;
+  evaluationValue: number;
 }
 
-function AlertMessage() {
+function AlertMessage({ evaluationValue, nomeSobrenome }: Props) {
   Swal.fire({
-    title: "Olá {Nome}, muito obrigado pela avaliação!",
-    text: "Caso nota menor que 3 uma mensagem, caso maior outra mensagem",
+    title: `Olá ${nomeSobrenome}, muito obrigado pela avaliação!`,
+    text: `${
+      evaluationValue >= 4
+        ? `agradecemos pela nota ${evaluationValue}`
+        : `Sinto muito que não tenhamos te surpreendindo, da próxima vez a sua nota será maior do que ${evaluationValue} ;)`
+    }`,
     icon: "success",
     confirmButtonText: '<a href="/">Fechar</a> ',
     confirmButtonColor: "#544bf7",
